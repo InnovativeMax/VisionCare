@@ -1,0 +1,130 @@
+/* ==========================================================
+   VisionCare ERP - Design System
+   File        : empty-state.css
+   Description : Empty State Component
+   Version     : 1.0
+========================================================== */
+
+
+/* ==========================================================
+   Empty State
+========================================================== */
+
+.empty-state {
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    padding: var(--space-2xl);
+
+}
+
+
+/* ==========================================================
+   Icon
+========================================================== */
+
+.empty-state-icon {
+
+    font-size: 4rem;
+
+    color: var(--text-light);
+
+    margin-bottom: var(--space-lg);
+
+}
+
+
+/* ==========================================================
+   Title
+========================================================== */
+
+.empty-state-title {
+
+    margin: 0 0 var(--space-sm);
+
+    color: var(--text-primary);
+
+    font-size: var(--font-xl);
+
+    font-weight: var(--font-semibold);
+
+}
+
+
+/* ==========================================================
+   Description
+========================================================== */
+
+.empty-state-description {
+
+    max-width: 500px;
+
+    margin: 0;
+
+    color: var(--text-secondary);
+
+    font-size: var(--font-md);
+
+    line-height: 1.6;
+
+}
+
+
+/* ==========================================================
+   Actions
+========================================================== */
+
+.empty-state-actions {
+
+    margin-top: var(--space-xl);
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: var(--space-md);
+
+    flex-wrap: wrap;
+
+}
+
+
+/* ==========================================================
+   Responsive
+========================================================== */
+
+@media (max-width: 768px) {
+
+    .empty-state {
+
+        padding: var(--space-xl);
+
+    }
+
+    .empty-state-icon {
+
+        font-size: 3rem;
+
+    }
+
+    .empty-state-actions {
+
+        width: 100%;
+
+    }
+
+    .empty-state-actions .btn {
+
+        width: 100%;
+
+    }
+
+}

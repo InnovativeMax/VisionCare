@@ -1,0 +1,118 @@
+/*
+==========================================================
+VisionCare ERP
+File        : filter.css
+Description : Search & Filter Components
+Version     : 2.0
+==========================================================
+*/
+
+/* ==========================================================
+   Filter Bar
+========================================================== */
+
+.filter-bar {
+
+    margin-bottom: var(--space-lg);
+
+}
+
+.filter-form {
+
+    display: flex;
+
+    align-items: end;
+
+    gap: var(--space-md);
+
+    flex-wrap: wrap;
+
+}
+
+/* ==========================================================
+   Search
+========================================================== */
+
+.filter-search {
+
+    flex: 1 1 420px;
+
+    min-width: 260px;
+
+}
+
+.filter-search .form-control {
+
+    width: 100%;
+
+}
+
+/* ==========================================================
+   Status
+========================================================== */
+
+.filter-status {
+
+    flex: 0 0 180px;
+
+}
+
+.filter-status .form-control {
+
+    width: 100%;
+
+}
+
+/* ==========================================================
+   Actions
+========================================================== */
+
+.filter-actions {
+
+    display: flex;
+
+    align-items: flex-end;
+
+    flex-shrink: 0;
+
+}
+
+.filter-actions .btn {
+
+    white-space: nowrap;
+
+}
+
+/* ==========================================================
+   Responsive
+========================================================== */
+
+@media (max-width: 768px) {
+
+    .filter-form {
+
+        flex-direction: column;
+
+        align-items: stretch;
+
+    }
+
+    .filter-search,
+    .filter-status,
+    .filter-actions {
+
+        width: 100%;
+
+        flex: 1 1 100%;
+
+    }
+
+    .filter-actions .btn {
+
+        width: 100%;
+
+        justify-content: center;
+
+    }
+
+}

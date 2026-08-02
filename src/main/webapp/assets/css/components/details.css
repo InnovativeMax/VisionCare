@@ -1,0 +1,87 @@
+/* ==========================================================
+   VisionCare ERP
+   File : details.css
+   Description : Detail View Components
+========================================================== */
+
+.details-grid {
+
+    display: grid;
+
+    grid-template-columns: 220px 1fr;
+
+    row-gap: var(--space-md);
+
+    column-gap: var(--space-lg);
+
+    max-width: 700px;
+
+}
+
+.details-label {
+
+    color: var(--text-secondary);
+
+    font-weight: var(--font-semibold);
+
+}
+
+.details-value {
+
+    color: var(--text-primary);
+
+    font-weight: var(--font-medium);
+
+}
+
+.customer-code{
+
+    font-family: monospace;
+
+    font-size: 15px;
+
+    font-weight: 700;
+
+    letter-spacing: 1px;
+
+    color: var(--primary);
+
+}
+
+.details-section {
+
+    margin-top: var(--space-xl);
+
+}
+
+.details-actions {
+
+    justify-content: flex-end;
+
+}
+
+.details-actions .btn {
+
+    min-width: 140px;
+
+    margin-top: var(--space-xl);
+
+}
+
+.card-header h2 {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: var(--space-sm);
+
+}
+
+.card-header h2 i {
+
+    color: var(--primary);
+
+    font-size: 1.2rem;
+
+}

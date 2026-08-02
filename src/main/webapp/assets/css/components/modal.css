@@ -1,0 +1,112 @@
+/* ==========================================================
+   VisionCare ERP
+   File        : modal.css
+   Description : Reusable Confirmation Modal
+   Version     : 1.0
+========================================================== */
+
+.modal {
+
+    display: none;
+
+    position: fixed;
+
+    inset: 0;
+
+    background: rgba(0, 0, 0, .45);
+
+    z-index: var(--z-modal);
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: var(--space-lg);
+
+}
+
+.modal.show {
+
+    display: flex;
+
+}
+
+.modal-content {
+
+    width: 100%;
+
+    max-width: 450px;
+
+    background: var(--surface);
+
+    border-radius: var(--radius-lg);
+
+    box-shadow: var(--shadow-lg);
+
+    overflow: hidden;
+
+    animation: modalFade .20s ease;
+
+}
+
+.modal-header {
+
+    padding: var(--space-lg);
+
+    border-bottom: 1px solid var(--border-color);
+
+}
+
+.modal-header h3 {
+
+    font-size: var(--font-xl);
+
+}
+
+.modal-body {
+
+    padding: var(--space-xl);
+
+}
+
+.modal-body p {
+
+    color: var(--text-secondary);
+
+    line-height: 1.6;
+
+}
+
+.modal-footer {
+
+    display: flex;
+
+    justify-content: flex-end;
+
+    gap: var(--space-md);
+
+    padding: var(--space-lg);
+
+    border-top: 1px solid var(--border-color);
+
+}
+
+@keyframes modalFade {
+
+    from {
+
+        opacity: 0;
+
+        transform: translateY(-10px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform: translateY(0);
+
+    }
+
+}

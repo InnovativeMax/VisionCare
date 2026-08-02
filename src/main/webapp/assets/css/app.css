@@ -1,0 +1,36 @@
+/*
+==========================================================
+VisionCare ERP
+File        : app.css
+Description : Master Stylesheet
+Version     : 1.0
+==========================================================
+*/
+
+/* Core */
+@import url("core/tokens.css");
+@import url("core/typography.css");
+@import url("core/common.css");
+
+/* Components */
+@import url("components/buttons.css");
+@import url("components/cards.css");
+@import url("components/forms.css");
+@import url("components/tables.css");
+@import url("components/navbar.css");
+@import url("components/sidebar.css");
+@import url("components/stat-cards.css");
+@import url("components/page-header.css");
+@import url("components/toast.css");
+@import url("components/alert.css");
+@import url("components/details.css");
+@import url("components/modal.css");
+@import url("components/filter.css");
+@import url("components/pagination.css");
+@import url("components/empty-state.css");
+
+/* Layout */
+@import url("layout/layout.css");
+
+/* Utilities */
+@import url("utilities/utilities.css");

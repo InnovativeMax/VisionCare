@@ -1,0 +1,110 @@
+/*
+==========================================================
+VisionCare ERP
+File        : page-header.css
+Description : Reusable Page Header Component
+Version     : 3.0
+==========================================================
+*/
+
+/* ==========================================================
+   Page Header
+========================================================== */
+
+.page-header {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: flex-start;
+
+    gap: var(--space-lg);
+
+    margin-bottom: var(--space-xl);
+
+}
+
+/* ==========================================================
+   Header Info
+========================================================== */
+
+.page-header-info {
+
+    flex: 1;
+
+    min-width: 0;
+
+}
+
+.page-title {
+
+    margin: 0;
+
+    font-size: var(--font-3xl);
+
+    font-weight: var(--font-bold);
+
+    color: var(--text-primary);
+
+    line-height: 1.2;
+
+}
+
+.page-description {
+
+    margin-top: var(--space-xs);
+
+    color: var(--text-secondary);
+
+    font-size: var(--font-md);
+
+    line-height: 1.5;
+
+}
+
+/* ==========================================================
+   Header Actions
+========================================================== */
+
+.page-header-actions {
+
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: var(--space-sm);
+
+    flex-shrink: 0;
+
+}
+
+/* ==========================================================
+   Responsive
+========================================================== */
+
+@media (max-width: 768px) {
+
+    .page-header {
+
+        flex-direction: column;
+
+        align-items: stretch;
+
+    }
+
+    .page-header-actions {
+
+        width: 100%;
+
+    }
+
+    .page-header-actions .btn {
+
+        width: 100%;
+
+        justify-content: center;
+
+    }
+
+}

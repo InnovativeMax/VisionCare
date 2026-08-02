@@ -1,0 +1,121 @@
+/* ==========================================================
+   VisionCare ERP - Design System
+   File        : cards.css
+   Description : Card Components
+   Version     : 1.0
+========================================================== */
+
+
+/* ==========================================================
+   Card
+========================================================== */
+
+.card {
+
+    background: var(--surface);
+
+    border: 1px solid var(--border-color);
+
+    border-radius: var(--radius-lg);
+
+    box-shadow: var(--shadow-sm);
+
+    padding: var(--card-padding);
+
+    transition: var(--transition);
+
+}
+
+
+/* ==========================================================
+   Card Hover
+========================================================== */
+
+.card:hover {
+
+    box-shadow: var(--shadow-md);
+
+}
+
+
+/* ==========================================================
+   Card Header
+========================================================== */
+
+.card-header {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    margin-bottom: var(--space-lg);
+
+}
+
+
+/* ==========================================================
+   Card Title
+========================================================== */
+
+.card-title {
+
+    font-size: var(--font-xl);
+
+    font-weight: var(--font-semibold);
+
+    color: var(--text-primary);
+
+}
+
+
+/* ==========================================================
+   Card Subtitle
+========================================================== */
+
+.card-subtitle {
+
+    margin-top: var(--space-xs);
+
+    font-size: var(--font-sm);
+
+    color: var(--text-secondary);
+
+}
+
+
+/* ==========================================================
+   Card Body
+========================================================== */
+
+.card-body {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: var(--space-md);
+
+}
+
+
+/* ==========================================================
+   Card Footer
+========================================================== */
+
+.card-footer {
+
+    display: flex;
+
+    justify-content: flex-end;
+
+    gap: var(--space-md);
+
+    margin-top: var(--space-lg);
+
+    padding-top: var(--space-lg);
+
+    border-top: 1px solid var(--border-color);
+
+}

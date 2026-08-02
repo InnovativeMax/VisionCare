@@ -1,0 +1,340 @@
+/* ==========================================================
+   VisionCare ERP - Design System
+   File        : tables.css
+   Description : Table Components
+   Version     : 2.0
+========================================================== */
+
+
+/* ==========================================================
+   Table Wrapper
+========================================================== */
+
+.table-responsive {
+
+    width: 100%;
+
+    overflow-x: auto;
+
+    border-radius: var(--radius-md);
+
+}
+
+
+/* ==========================================================
+   Table
+========================================================== */
+
+.table {
+
+    width: 100%;
+
+    border-collapse: separate;
+
+    border-spacing: 0;
+
+    background: var(--surface);
+
+}
+
+
+/* ==========================================================
+   Header
+========================================================== */
+
+.table thead {
+
+    background: var(--surface-secondary);
+
+}
+
+.table th {
+
+    position: sticky;
+
+    top: 0;
+
+    z-index: 1;
+
+    padding: 14px 16px;
+
+    text-align: left;
+
+    font-size: var(--font-sm);
+
+    font-weight: var(--font-semibold);
+
+    color: var(--text-primary);
+
+    border-bottom: 1px solid var(--border-color);
+
+    white-space: nowrap;
+
+}
+
+
+/* ==========================================================
+   Body
+========================================================== */
+
+.table td {
+
+    padding: 14px 16px;
+
+    font-size: var(--font-md);
+
+    color: var(--text-primary);
+
+    border-bottom: 1px solid var(--border-color);
+
+    vertical-align: middle;
+
+}
+
+
+/* ==========================================================
+   Row Hover
+========================================================== */
+
+.table tbody tr {
+
+    transition: background-color .2s ease,
+    transform .1s ease;
+
+}
+
+.table tbody tr:hover {
+
+    background: var(--surface-hover);
+
+}
+
+
+/* ==========================================================
+   First / Last Columns
+========================================================== */
+
+.table th:first-child,
+.table td:first-child {
+
+    padding-left: var(--space-lg);
+
+}
+
+.table th:last-child,
+.table td:last-child {
+
+    padding-right: var(--space-lg);
+
+}
+
+
+/* ==========================================================
+   Zebra Rows
+========================================================== */
+
+.table-striped tbody tr:nth-child(even) {
+
+    background: rgba(0, 0, 0, .02);
+
+}
+
+
+/* ==========================================================
+   Compact Table
+========================================================== */
+
+.table-sm th,
+.table-sm td {
+
+    padding: 10px 12px;
+
+}
+
+
+/* ==========================================================
+   Alignment Helpers
+========================================================== */
+
+.text-center {
+
+    text-align: center;
+
+}
+
+.text-right {
+
+    text-align: right;
+
+}
+
+
+/* ==========================================================
+   Status Badges
+========================================================== */
+
+.badge {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    min-width: 90px;
+
+    padding: 6px 12px;
+
+    border-radius: 999px;
+
+    font-size: var(--font-sm);
+
+    font-weight: var(--font-semibold);
+
+    white-space: nowrap;
+
+}
+
+.badge-success {
+
+    background: rgba(34, 197, 94, .15);
+
+    color: var(--success);
+
+}
+
+.badge-warning {
+
+    background: rgba(245, 158, 11, .15);
+
+    color: var(--warning);
+
+}
+
+.badge-danger {
+
+    background: rgba(239, 68, 68, .15);
+
+    color: var(--danger);
+
+}
+
+.badge-primary {
+
+    background: rgba(37, 99, 235, .15);
+
+    color: var(--primary);
+
+}
+
+.badge-secondary {
+
+    background: rgba(107, 114, 128, .15);
+
+    color: var(--text-secondary);
+
+}
+
+
+/* ==========================================================
+   Empty State
+========================================================== */
+
+.table-empty {
+
+    padding: var(--space-xl);
+
+    text-align: center;
+
+    color: var(--text-secondary);
+
+}
+
+
+/* ==========================================================
+   Table Links
+========================================================== */
+
+.table-link {
+
+    color: var(--primary);
+
+    font-weight: var(--font-semibold);
+
+    text-decoration: none;
+
+    transition: color .2s ease;
+
+}
+
+.table-link:hover {
+
+    color: var(--primary-hover);
+
+    text-decoration: underline;
+
+}
+
+
+/* ==========================================================
+   Action Buttons
+========================================================== */
+
+.action-btn {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    width: 36px;
+
+    height: 36px;
+
+    margin: 0 2px;
+
+    border-radius: var(--radius-sm);
+
+    text-decoration: none;
+
+    transition: background-color .2s ease,
+    transform .15s ease;
+
+}
+
+.action-btn:hover {
+
+    transform: translateY(-1px);
+
+}
+
+.action-btn i {
+
+    font-size: 16px;
+
+}
+
+.action-edit {
+
+    color: var(--primary);
+
+}
+
+.action-edit:hover {
+
+    background: rgba(37, 99, 235, .10);
+
+}
+
+.action-delete {
+
+    color: var(--danger);
+
+}
+
+.action-delete:hover {
+
+    background: rgba(239, 68, 68, .10);
+
+}

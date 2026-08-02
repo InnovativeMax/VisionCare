@@ -1,0 +1,168 @@
+/* ==========================================================
+   VisionCare ERP
+   File        : layout.css
+   Description : Application Layout
+   Version     : 1.0
+========================================================== */
+
+/* ==========================================================
+   App Layout
+========================================================== */
+
+.app-layout {
+
+    display: flex;
+
+    min-height: calc(100vh - 70px);
+
+}
+
+/* ==========================================================
+   Main Page
+========================================================== */
+
+.page {
+
+    flex: 1;
+
+    padding: var(--space-xl);
+
+    background: var(--background);
+
+    overflow-y: auto;
+
+}
+
+/* ==========================================================
+   Container
+========================================================== */
+
+.container {
+
+    width: 100%;
+
+    max-width: 1400px;
+
+    margin: 0 auto;
+
+}
+
+/* ==========================================================
+   Page Header
+========================================================== */
+
+.page-header {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: var(--space-xl);
+
+}
+
+.page-header-content {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: var(--space-xs);
+
+}
+
+.page-title {
+
+    margin: 0;
+
+    font-size: var(--font-3xl);
+
+    font-weight: var(--font-bold);
+
+    color: var(--text-primary);
+
+}
+
+.page-description {
+
+    margin: 0;
+
+    color: var(--text-secondary);
+
+}
+
+/* ==========================================================
+   Content
+========================================================== */
+
+.content {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: var(--space-lg);
+
+}
+
+/* ==========================================================
+   Grid
+========================================================== */
+
+.grid {
+
+    display: grid;
+
+    gap: var(--space-lg);
+
+}
+
+.grid-2 {
+
+    grid-template-columns: repeat(2, 1fr);
+
+}
+
+.grid-3 {
+
+    grid-template-columns: repeat(3, 1fr);
+
+}
+
+.grid-4 {
+
+    grid-template-columns: repeat(4, 1fr);
+
+}
+
+/* ==========================================================
+   Responsive
+========================================================== */
+
+@media (max-width: 768px) {
+
+    .app-layout {
+
+        flex-direction: column;
+
+    }
+
+    .page {
+
+        padding: var(--space-lg);
+
+    }
+
+    .page-header {
+
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: var(--space-md);
+
+    }
+
+}
