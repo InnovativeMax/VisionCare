@@ -5,10 +5,16 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function initializeBilling() {
-
+    console.log("Billing initialized");
     document
         .querySelectorAll("#productTable tbody tr")
-        .forEach(bindRow);
+        .forEach(row => {
+
+            bindRow(row);
+
+            calculateRow(row);
+
+        });
 
     document
         .getElementById("discount")
@@ -16,9 +22,10 @@ function initializeBilling() {
 
     document
         .getElementById("addRow")
-        .addEventListener("click", addRow);
+        ?.addEventListener("click", addRow);
 
     updateRemoveButtons();
+
 }
 
 function bindRow(row) {
@@ -158,18 +165,20 @@ function calculateSummary() {
     let discount =
         Number(discountField.value || 0);
 
-    // Discount cannot be negative
+    // Prevent negative discount
     if (discount < 0) {
 
         discount = 0;
+
         discountField.value = "0.00";
 
     }
 
-    // Discount cannot exceed subtotal
+    // Prevent discount greater than subtotal
     if (discount > subtotal) {
 
         discount = subtotal;
+
         discountField.value = subtotal.toFixed(2);
 
     }
@@ -177,11 +186,15 @@ function calculateSummary() {
     const grandTotal =
         Math.max(subtotal - discount, 0);
 
+    // Update Summary Fields
+
     document.getElementById("subTotal").value =
         subtotal.toFixed(2);
 
     document.getElementById("grandTotal").value =
         grandTotal.toFixed(2);
+
+    // Update Grand Total Display (UI)
 
     const grandTotalDisplay =
         document.getElementById("grandTotalDisplay");
@@ -189,16 +202,21 @@ function calculateSummary() {
     if (grandTotalDisplay) {
 
         grandTotalDisplay.textContent =
-            (subtotal - discount).toFixed(2);
+            grandTotal.toFixed(2);
 
     }
+
+    // Enable / Disable Save Button
 
     const saveButton =
         document.querySelector("button[type='submit']");
 
-    // Disable Save if no valid sale
-    saveButton.disabled =
-        subtotal <= 0 || grandTotal <= 0;
+    if (saveButton) {
+
+        saveButton.disabled =
+            subtotal <= 0 || grandTotal <= 0;
+
+    }
 
 }
 
