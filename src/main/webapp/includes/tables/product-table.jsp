@@ -34,7 +34,17 @@
 
                     <tr>
 
-                        <td>${product.productCode}</td>
+                        <!-- Product Code -->
+                        <td>
+
+                            <a href="${pageContext.request.contextPath}/products?action=view&id=${product.id}"
+                               class="table-link">
+
+                                    ${product.productCode}
+
+                            </a>
+
+                        </td>
 
                         <td>${product.productName}</td>
 
@@ -43,15 +53,19 @@
                         <td>${product.brand}</td>
 
                         <td class="text-end">
+
                             <fmt:formatNumber
                                     value="${product.sellingPrice}"
                                     type="number"
                                     minFractionDigits="2"
                                     maxFractionDigits="2"/>
+
                         </td>
 
                         <td class="text-center">
+
                                 ${product.stockQuantity}
+
                         </td>
 
                         <td class="text-center">
@@ -64,21 +78,52 @@
 
                         </td>
 
+                        <!-- Actions -->
                         <td class="text-center">
 
-                            <a href="${pageContext.request.contextPath}/products?action=view&id=${product.id}"
-                               class="btn btn-sm btn-outline">
+                            <details class="action-menu">
 
-                                View
+                                <summary class="action-menu-btn">
 
-                            </a>
+                                    <i class="bi bi-three-dots-vertical"></i>
 
-                            <a href="${pageContext.request.contextPath}/products?action=edit&id=${product.id}"
-                               class="btn btn-sm btn-outline">
+                                </summary>
 
-                                Edit
+                                <div class="action-menu-dropdown">
 
-                            </a>
+                                    <a href="${pageContext.request.contextPath}/products?action=view&id=${product.id}">
+
+                                        <i class="bi bi-eye"></i>
+
+                                        View
+
+                                    </a>
+
+                                    <a href="${pageContext.request.contextPath}/products?action=edit&id=${product.id}">
+
+                                        <i class="bi bi-pencil-square"></i>
+
+                                        Edit
+
+                                    </a>
+
+                                    <c:if test="${product.active}">
+
+                                        <a href="${pageContext.request.contextPath}/products?action=deactivate&id=${product.id}"
+                                           onclick="return confirm('Deactivate this product?');"
+                                           class="text-danger">
+
+                                            <i class="bi bi-slash-circle"></i>
+
+                                            Deactivate
+
+                                        </a>
+
+                                    </c:if>
+
+                                </div>
+
+                            </details>
 
                         </td>
 
@@ -111,3 +156,54 @@
     </c:otherwise>
 
 </c:choose>
+<script>
+
+    document.addEventListener("DOMContentLoaded", function () {
+
+        const menus = document.querySelectorAll(".action-menu");
+
+        menus.forEach(menu => {
+
+            menu.addEventListener("toggle", function () {
+
+                if (menu.open) {
+
+                    menus.forEach(other => {
+
+                        if (other !== menu) {
+                            other.removeAttribute("open");
+                        }
+
+                    });
+
+                }
+
+            });
+
+        });
+
+        document.addEventListener("click", function (e) {
+
+            menus.forEach(menu => {
+
+                if (!menu.contains(e.target)) {
+                    menu.removeAttribute("open");
+                }
+
+            });
+
+        });
+
+        document.addEventListener("keydown", function (e) {
+
+            if (e.key === "Escape") {
+
+                menus.forEach(menu => menu.removeAttribute("open"));
+
+            }
+
+        });
+
+    });
+
+</script>

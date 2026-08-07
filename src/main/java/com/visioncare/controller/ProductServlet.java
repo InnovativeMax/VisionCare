@@ -35,15 +35,32 @@ public class ProductServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request,
                          HttpServletResponse response)
             throws ServletException, IOException {
-        System.out.println("===== PRODUCT SERVLET =====");
         String action = request.getParameter("action");
-
-        if ("new".equals(action)) {
-            showProductForm(request, response);
-            return;
+        if (action == null || action.isBlank()) {
+            action = "list";
         }
+        switch (action) {
 
-        showProductList(request, response);
+            case "new":
+                showProductForm(request, response);
+                break;
+
+            case "view":
+                showProductView(request, response);
+                break;
+
+            case "edit":
+                showEditForm(request, response);
+                break;
+
+            case "deactivate":
+                deactivateProduct(request, response);
+                break;
+
+            default:
+                showProductList(request, response);
+                break;
+        }
     }
 
     /*
@@ -57,7 +74,24 @@ public class ProductServlet extends HttpServlet {
                           HttpServletResponse response)
             throws ServletException, IOException {
 
-        saveProduct(request, response);
+        String action = request.getParameter("action");
+
+        if (action == null || action.isBlank()) {
+            saveProduct(request, response);
+            return;
+        }
+
+        switch (action) {
+
+            case "update":
+                updateProduct(request, response);
+                break;
+
+            default:
+                saveProduct(request, response);
+                break;
+        }
+
     }
 
     /*
@@ -70,24 +104,47 @@ public class ProductServlet extends HttpServlet {
                                  HttpServletResponse response)
             throws ServletException, IOException {
 
-        List<Product> products =
-                productService.getProductsByStatus("active");
+        String search = request.getParameter("search");
+        String status = request.getParameter("status");
+        System.out.println("=================================");
+        System.out.println("SEARCH = " + search);
+        System.out.println("STATUS = " + status);
+        System.out.println("=================================");
+
+        if (search == null) {
+            search = "";
+        }
+
+        if (status == null || status.isBlank()) {
+            status = "active";
+        }
+
+        List<Product> products;
+
+        if (search.isBlank()) {
+
+            products = productService.getProductsByStatus(status);
+
+        } else {
+
+            products = productService.searchProducts(
+                    search,
+                    status
+            );
+
+        }
 
         request.setAttribute("products", products);
 
-        // Temporary pagination values
-        request.setAttribute("currentPage", 1);
-        request.setAttribute("totalPages", 1);
-        request.setAttribute("totalRecords", products.size());
-        request.setAttribute("pageSize", PAGE_SIZE);
-        request.setAttribute("paginationQuery", "");
-        request.setAttribute("entityName", "product");
+        request.setAttribute("search", search);
+        request.setAttribute("status", status);
 
         request.setAttribute("activeMenu", "products");
         request.setAttribute("activeSection", "masters");
 
         request.getRequestDispatcher("/product/list.jsp")
                 .forward(request, response);
+
     }
 
     /*
@@ -118,6 +175,68 @@ public class ProductServlet extends HttpServlet {
 
         request.getRequestDispatcher("/product/form.jsp")
                 .forward(request, response);
+    }
+
+    private void showProductView(HttpServletRequest request,
+                                 HttpServletResponse response)
+            throws ServletException, IOException {
+
+        Long id = Long.parseLong(request.getParameter("id"));
+
+        Product product = productService.getProductById(id);
+
+        if (product == null) {
+            response.sendRedirect(request.getContextPath() + "/products");
+            return;
+        }
+
+        request.setAttribute("product", product);
+
+        request.setAttribute("activeMenu", "products");
+        request.setAttribute("activeSection", "masters");
+
+        request.getRequestDispatcher("/product/view.jsp")
+                .forward(request, response);
+
+    }
+
+    private void showEditForm(HttpServletRequest request,
+                              HttpServletResponse response)
+            throws ServletException, IOException {
+
+        Long id = Long.valueOf(request.getParameter("id"));
+
+        Product product = productService.getProductById(id);
+
+        if (product == null) {
+            response.sendRedirect(request.getContextPath() + "/products");
+            return;
+        }
+
+        request.setAttribute("product", product);
+
+        request.setAttribute("categories", ProductCategories.ALL);
+
+        request.setAttribute("activeMenu", "products");
+        request.setAttribute("activeSection", "masters");
+
+        request.getRequestDispatcher("/product/form.jsp")
+                .forward(request, response);
+
+    }
+
+    private void deactivateProduct(HttpServletRequest request,
+                                   HttpServletResponse response)
+            throws IOException {
+
+        Long id = Long.valueOf(request.getParameter("id"));
+
+        productService.deactivateProduct(id);
+
+        response.sendRedirect(
+                request.getContextPath() +
+                        "/products?success=deactivated");
+
     }
 
     /*
@@ -204,6 +323,63 @@ public class ProductServlet extends HttpServlet {
                 request.getContextPath()
                         + "/products?success=created"
         );
+    }
+
+    private void updateProduct(HttpServletRequest request,
+                               HttpServletResponse response)
+            throws ServletException, IOException {
+
+        Product product = new Product();
+
+        product.setId(Integer.parseInt(request.getParameter("id")));
+
+        product.setProductCode(request.getParameter("productCode"));
+
+        product.setProductName(request.getParameter("productName"));
+
+        product.setCategory(request.getParameter("category"));
+
+        product.setBrand(request.getParameter("brand"));
+
+        product.setCostPrice(
+                new BigDecimal(request.getParameter("costPrice")));
+
+        product.setSellingPrice(
+                new BigDecimal(request.getParameter("sellingPrice")));
+
+        product.setStockQuantity(
+                Integer.parseInt(request.getParameter("stockQuantity")));
+
+        product.setReorderLevel(
+                Integer.parseInt(request.getParameter("reorderLevel")));
+
+        product.setDescription(request.getParameter("description"));
+
+        product.setActive(request.getParameter("active") != null);
+
+        List<String> errors = productValidator.validate(product);
+
+        if (!errors.isEmpty()) {
+
+            request.setAttribute("errors", errors);
+            request.setAttribute("product", product);
+            request.setAttribute("categories", ProductCategories.ALL);
+
+            request.setAttribute("activeMenu", "products");
+            request.setAttribute("activeSection", "masters");
+
+            request.getRequestDispatcher("/product/form.jsp")
+                    .forward(request, response);
+
+            return;
+        }
+
+        productService.updateProduct(product);
+
+        response.sendRedirect(
+                request.getContextPath()
+                        + "/products?action=view&id=" + product.getId());
+
     }
 
 }

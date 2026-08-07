@@ -34,7 +34,7 @@
 
 }
 
-.customer-code{
+.customer-code {
 
     font-family: monospace;
 
@@ -83,5 +83,59 @@
     color: var(--primary);
 
     font-size: 1.2rem;
+
+}
+
+/* ==========================================================
+   Detail Value Box
+========================================================== */
+
+.detail-value {
+
+    display: flex;
+
+    align-items: center;
+
+    min-height: 46px;
+
+    padding: 0 var(--space-md);
+
+    background: var(--surface-secondary);
+
+    border: 1px solid var(--border-color);
+
+    border-radius: var(--radius-md);
+
+    color: var(--text-primary);
+
+    font-weight: var(--font-medium);
+
+    line-height: 1.5;
+
+    word-break: break-word;
+
+}
+
+/* ==========================================================
+   Detail Grid (Reusable)
+========================================================== */
+
+.detail-grid {
+
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: var(--space-lg);
+
+}
+
+@media (max-width: 768px) {
+
+    .detail-grid {
+
+        grid-template-columns: 1fr;
+
+    }
 
 }

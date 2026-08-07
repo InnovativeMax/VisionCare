@@ -856,4 +856,44 @@ public class ProductDAO {
         return 0;
 
     }
+
+    public void reduceStock(int productId,
+                            int quantity) {
+
+        String sql = """
+                UPDATE products
+                SET stock_quantity =
+                    stock_quantity - ?
+                WHERE id = ?
+                """;
+
+        try (
+
+                Connection connection =
+                        DBConnection.getConnection();
+
+                PreparedStatement statement =
+                        connection.prepareStatement(sql)
+
+        ) {
+
+            statement.setInt(
+                    1,
+                    quantity
+            );
+
+            statement.setInt(
+                    2,
+                    productId
+            );
+
+            statement.executeUpdate();
+
+        } catch (SQLException exception) {
+
+            exception.printStackTrace();
+
+        }
+
+    }
 }

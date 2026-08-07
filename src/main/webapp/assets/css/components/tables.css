@@ -269,7 +269,7 @@
 
 .table-link:hover {
 
-    color: var(--primary-hover);
+    color: var(--primary-hover) !important;
 
     text-decoration: underline;
 
@@ -337,4 +337,89 @@
 
     background: rgba(239, 68, 68, .10);
 
+}
+
+/* ==========================================================
+   Action Menu Dropdown
+========================================================== */
+
+.action-menu {
+    position: relative;
+    display: inline-block;
+}
+
+.action-menu summary {
+    list-style: none;
+}
+
+.action-menu summary::-webkit-details-marker {
+    display: none;
+}
+
+.action-menu-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    background: var(--surface);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.action-menu-btn:hover {
+    background: var(--surface-secondary);
+    border-color: var(--primary);
+}
+
+.action-menu-btn i {
+    font-size: 18px;
+    color: var(--text-secondary);
+}
+
+.action-menu[open] .action-menu-btn {
+    border-color: var(--primary);
+}
+
+.action-menu-dropdown {
+    position: absolute;
+    right: 0;
+    top: calc(100% + 8px);
+    min-width: 180px;
+    background: var(--surface);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-lg);
+    overflow: hidden;
+    z-index: 1000;
+}
+
+.action-menu-dropdown a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 16px;
+    color: var(--text-primary);
+    text-decoration: none;
+    font-size: var(--font-sm);
+    transition: var(--transition);
+}
+
+.action-menu-dropdown a:hover {
+    background: var(--surface-secondary);
+}
+
+.action-menu-dropdown i {
+    width: 18px;
+    text-align: center;
+}
+
+.action-menu-dropdown .danger {
+    color: var(--danger);
+}
+
+.action-menu-dropdown .danger:hover {
+    background: rgba(239, 68, 68, .08);
 }

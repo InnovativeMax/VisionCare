@@ -38,26 +38,46 @@
                     </a>
                 </li>
 
-                <li>
-                    <a href="#">
-                        <i class="bi bi-person-gear"></i> Users
-                    </a>
-                </li>
+                <%--                <li>--%>
+                <%--                    <a href="#">--%>
+                <%--                        <i class="bi bi-person-gear"></i> Users--%>
+                <%--                    </a>--%>
+                <%--                </li>--%>
 
             </ul>
 
         </li>
 
-        <li>
-            <a href="#">
-                <i class="bi bi-box-seam"></i> Inventory
-            </a>
-        </li>
+        <%--        <li>--%>
+        <%--            <a href="#">--%>
+        <%--                <i class="bi bi-box-seam"></i> Inventory--%>
+        <%--            </a>--%>
+        <%--        </li>--%>
 
-        <li>
+        <li class="has-submenu <%= "billing".equals(activeSection) ? "open" : "" %>">
+
             <a href="#">
-                <i class="bi bi-receipt"></i> Billing
+                <i class="bi bi-receipt"></i>
+                Billing
+                <i class="bi bi-chevron-down submenu-arrow"></i>
             </a>
+
+            <ul class="submenu">
+
+                <li>
+
+                    <a href="${pageContext.request.contextPath}/billing"
+                       class="<%= "billing".equals(activeMenu) ? "active" : "" %>">
+
+                        <i class="bi bi-cart-check"></i>
+                        Sales
+
+                    </a>
+
+                </li>
+
+            </ul>
+
         </li>
 
         <li>

@@ -28,9 +28,13 @@
                 <div class="card-body">
 
                     <form
-                            action="${pageContext.request.contextPath}/products"
+                            action="${pageContext.request.contextPath}/products${product.id != null ? '?action=update' : ''}"
                             method="post"
                             novalidate>
+
+                        <c:if test="${product.id != null}">
+                            <input type="hidden" name="id" value="${product.id}">
+                        </c:if>
 
                         <jsp:include page="/includes/forms/product-form-fields.jsp"/>
 
