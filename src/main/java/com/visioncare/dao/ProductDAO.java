@@ -896,4 +896,30 @@ public class ProductDAO {
         }
 
     }
+
+    public int getLowStockCount() {
+
+        String sql = """
+                SELECT COUNT(*)
+                FROM products
+                WHERE stock_quantity <= reorder_level
+                AND is_active = TRUE
+                """;
+
+        try (
+                Connection connection = DBConnection.getConnection();
+                PreparedStatement statement = connection.prepareStatement(sql);
+                ResultSet resultSet = statement.executeQuery()
+        ) {
+
+            if (resultSet.next()) {
+                return resultSet.getInt(1);
+            }
+
+        } catch (SQLException exception) {
+            exception.printStackTrace();
+        }
+
+        return 0;
+    }
 }

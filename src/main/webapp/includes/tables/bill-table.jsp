@@ -100,11 +100,11 @@
 
                                         </a>
 
-                                        <a href="#"
-                                           onclick="window.print();return false;">
+                                        <a href="${pageContext.request.contextPath}/billing/print?id=${bill.id}"
+                                           target="_blank"
+                                           rel="noopener">
 
                                             <i class="bi bi-printer"></i>
-
                                             Print
 
                                         </a>

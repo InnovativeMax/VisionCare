@@ -6,6 +6,7 @@ import com.visioncare.model.BillItem;
 import com.visioncare.model.Customer;
 import com.visioncare.model.Product;
 
+import java.math.BigDecimal;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -677,5 +678,53 @@ public class BillDAO {
 
         return item;
 
+    }
+
+    public BigDecimal getTotalRevenue() {
+
+        String sql = """
+                SELECT COALESCE(SUM(total_amount), 0)
+                FROM bills
+                """;
+
+        try (
+                Connection connection = DBConnection.getConnection();
+                PreparedStatement statement = connection.prepareStatement(sql);
+                ResultSet resultSet = statement.executeQuery()
+        ) {
+
+            if (resultSet.next()) {
+                return resultSet.getBigDecimal(1);
+            }
+
+        } catch (SQLException exception) {
+            exception.printStackTrace();
+        }
+
+        return BigDecimal.ZERO;
+    }
+
+    public int getTotalBills() {
+
+        String sql = """
+                SELECT COUNT(*)
+                FROM bills
+                """;
+
+        try (
+                Connection connection = DBConnection.getConnection();
+                PreparedStatement statement = connection.prepareStatement(sql);
+                ResultSet resultSet = statement.executeQuery()
+        ) {
+
+            if (resultSet.next()) {
+                return resultSet.getInt(1);
+            }
+
+        } catch (SQLException exception) {
+            exception.printStackTrace();
+        }
+
+        return 0;
     }
 }

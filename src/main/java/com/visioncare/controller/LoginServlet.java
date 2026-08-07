@@ -1,9 +1,8 @@
 package com.visioncare.controller;
 
+import com.visioncare.constants.ApplicationConstants;
 import com.visioncare.model.User;
 import com.visioncare.service.AuthenticationService;
-
-import com.visioncare.constants.ApplicationConstants;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -51,16 +50,8 @@ public class LoginServlet extends HttpServlet {
                     user
             );
 
-            /*
-             * TODO:
-             * Replace with DashboardServlet once implemented.
-             */
-// response.sendRedirect(
-//         request.getContextPath() + "/dashboard"
-// );
-
             response.sendRedirect(
-                    request.getContextPath() + "/dashboard/dashboard.jsp"
+                    request.getContextPath() + "/dashboard"
             );
 
         } else {

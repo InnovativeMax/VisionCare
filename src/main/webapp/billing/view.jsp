@@ -227,11 +227,15 @@
 
                     </a>
 
-                    <button
+                    <button type="button"
                             class="btn btn-primary"
-                            onclick="window.print()">
+                            onclick="window.open(
+                                    '${pageContext.request.contextPath}/billing/print?id=${bill.id}',
+                                    '_blank'
+                                    )">
 
-                        🖨 Print Invoice
+                        <i class="bi bi-printer"></i>
+                        Print Invoice
 
                     </button>
 

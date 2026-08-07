@@ -80,17 +80,53 @@
 
         </li>
 
-        <li>
+        <li class="has-submenu <%= "reports".equals(activeSection) ? "open" : "" %>">
+
             <a href="#">
-                <i class="bi bi-bar-chart"></i> Reports
+                <i class="bi bi-bar-chart"></i>
+                Reports
+                <i class="bi bi-chevron-down submenu-arrow"></i>
             </a>
+
+            <ul class="submenu">
+
+                <li>
+
+                    <a href="${pageContext.request.contextPath}/reports/sales"
+                       target="_blank"
+                       rel="noopener"
+                       class="<%= "sales-report".equals(activeMenu) ? "active" : "" %>">
+
+                        <i class="bi bi-file-earmark-pdf"></i>
+                        Sales Report
+
+                    </a>
+
+                </li>
+
+                <li>
+
+                    <a href="${pageContext.request.contextPath}/reports/inventory"
+                       target="_blank"
+                       rel="noopener"
+                       class="<%= "inventory-report".equals(activeMenu) ? "active" : "" %>">
+
+                        <i class="bi bi-file-earmark-bar-graph"></i>
+                        Inventory Report
+
+                    </a>
+
+                </li>
+
+            </ul>
+
         </li>
 
-        <li>
-            <a href="#">
-                <i class="bi bi-gear"></i> Settings
-            </a>
-        </li>
+        <%--        <li>--%>
+        <%--            <a href="#">--%>
+        <%--                <i class="bi bi-gear"></i> Settings--%>
+        <%--            </a>--%>
+        <%--        </li>--%>
 
     </ul>
 

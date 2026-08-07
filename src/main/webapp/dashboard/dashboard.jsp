@@ -117,7 +117,7 @@
 
                     <div class="stat-value">
 
-                        0
+                        ${customerCount}
 
                     </div>
 
@@ -135,7 +135,7 @@
 
                     <div class="stat-value">
 
-                        0
+                        ${productCount}
 
                     </div>
 
@@ -147,13 +147,13 @@
 
                         <i class="bi bi-currency-rupee"></i>
 
-                        Today's Sales
+                        Total Revenue
 
                     </div>
 
                     <div class="stat-value">
 
-                        ₹0
+                        ₹${totalRevenue}
 
                     </div>
 
@@ -163,15 +163,15 @@
 
                     <div class="stat-title">
 
-                        <i class="bi bi-exclamation-triangle"></i>
+                        <i class="bi bi-receipt"></i>
 
-                        Low Stock
+                        Total Bills
 
                     </div>
 
                     <div class="stat-value">
 
-                        0
+                        ${totalBills}
 
                     </div>
 
