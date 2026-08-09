@@ -8,7 +8,7 @@
     <ul class="sidebar-menu">
 
         <li>
-            <a href="${pageContext.request.contextPath}/dashboard/dashboard.jsp"
+            <a href="${pageContext.request.contextPath}/dashboard"
                class="<%= "dashboard".equals(activeMenu) ? "active" : "" %>">
                 <i class="bi bi-speedometer2"></i> Dashboard
             </a>
